@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque</title>
+    <link rel="stylesheet" href="stylesPes.css">
+</head>
+<body>
+    <div id="pesquisa-form">
+        <h2>Pesquisar Produto</h2>
+        <input type="text" id="pesquisa" placeholder="Pesquisar por nome ou código">
+        <button id="pesquisar-button">Pesquisar</button>
+        <button id="voltar-button">Voltar</button>
+    </div>
+    <div id="resultado-pesquisa">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function pesquisarProduto() {
+                const termo = $('#pesquisa').val().toLowerCase();
+
+                $.ajax({
+                    type: "POST",
+                    url: " ", // Armazenar a nessa URL o arquivo para buscar os dados no banco de dados
+                    data: { termo: termo },
+                    success: function(response) {
+                        $('#resultado-pesquisa').html(response);
+                    }
+                });
+            }
+
+            $('#pesquisar-button').click(function() {
+                pesquisarProduto();
+            });
+
+            $('#voltar-button').click(function() {
+                window.location.href = 'http://127.0.0.1:3000/paginaInicial/indexInicial.html';
+            });
+        });
+    </script>
+</body>
+</html>

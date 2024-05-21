@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styleInicial.css">
+<title>Tela Principal</title>
+</head>
+<body>
+
+<div id="menu">
+    <h1>Sistema Estoque</h1>
+    <div>
+        <button id="cadastrar-produto">Cadastrar Produto</button>
+        <button id="cadastrar-fornecedor">Cadastrar Fornecedor</button>
+    </div>
+    <div>
+        <button id="pesquisar-produto">Pesquisar Produto</button>
+        <button id="pesquisar-fornecedor">Pesquisar Fornecedor</button>
+    </div>
+    <button id="sair">Sair</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#cadastrar-produto').click(function() {
+            irParaPagina('http://127.0.0.1:3000/cadastroProduto/indexPro.html');
+        });
+
+        $('#cadastrar-fornecedor').click(function() {
+            irParaPagina('http://127.0.0.1:3000/cadastroFornecedor/indexFor.html');
+        });
+
+        $('#pesquisar-produto').click(function() {
+            irParaPagina('http://127.0.0.1:3000/pesquisaProduto/indexPes.html');
+        });
+
+        $('#pesquisar-fornecedor').click(function() {
+            irParaPagina('http://127.0.0.1:3000/pesquisaFornecedor/intexPF.html');
+        });
+
+        $('#sair').click(function() {
+            irParaPagina('http://127.0.0.1:3000/login/indexLo.html');
+        });
+
+        function irParaPagina(url) {
+            window.location.href = url;
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="stylesLo.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="logo.png" alt="" width="250px">
+        </div>
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <input type="text" id="username" name="username" required placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" required placeholder="Senha">
+            </div>
+            <button type="submit">Login</button>
+            <button id="cadastrar-button">Cadastrar</button>
+        </form>
+        <div id="error-message"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scriptLo.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#login-form").submit(function(event) {
+                event.preventDefault();
+                
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: " ", // Acrecentar nessa URL o caminho do arquivo que será chamado para processar a requisição.
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    success: function(response){
+                        if (response === "success") {
+                            window.location.href = "http://127.0.0.1:3000/paginaInicial/indexInicial.html";
+                        } else {
+                            $("#error-message").text("Credenciais inválidas. Tente novamente.");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Ocorreu um erro ao processar a requisição: " + error);
+                    }
+                });
+            });
+
+            $("#cadastrar-button").click(function(){
+                cadastrar();
+            });
+        });
+
+        function cadastrar(){
+            window.location.href = 'http://127.0.0.1:3000/cadastrarlogin/indexCL.html';
+        }
+    </script>
+</body>
+</html>
+
+

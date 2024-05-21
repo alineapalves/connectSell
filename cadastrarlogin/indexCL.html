@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styleCL.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Cadastrar Login</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <input type="text" id="username" name="username" required placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" required placeholder="Senha">
+            </div>
+            <button type="submit">Confirmar</button>
+            <button id="finalizar-button">Finalizar</button>
+        </form>
+        <div id="error-message"></div>
+        <div id="signup-success-message"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#signup-form').submit(function(event) {
+                event.preventDefault();
+
+                var username = $('#username').val();
+                var password = $('#password').val();
+
+                if (username.trim() === '' || password.trim() === '') {
+                    $('#error-message').text('Por favor, preencha todos os campos.');
+                } else {
+                   $('#signup-success-message').text('Cadastro realizado com sucesso!');
+                }
+            });
+
+            $('#finalizar-button').click(function(){
+                finalizar();
+            });
+
+            function finalizar(){
+                window.location.href = 'http://127.0.0.1:3000/login/indexLo.html';
+            }
+        });
+    </script>
+</body>
+</html>
